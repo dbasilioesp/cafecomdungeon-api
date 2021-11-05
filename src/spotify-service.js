@@ -19,11 +19,16 @@ const SpotifyService = {
         return response.data;
     },
 
-    async getEpisodes(token) {
-        const url = 'https://api.spotify.com/v1/shows/3YawCjn5MStRqifTZaEUUM/episodes?market=BR';
+    async getEpisodes({token, limit, offset}) {
+        const url = 'https://api.spotify.com/v1/shows/3YawCjn5MStRqifTZaEUUM/episodes';
         const config = {
             headers: {
                 'Authorization': 'Bearer ' + token
+            },
+            params: {
+                market: 'BR',
+                offset,
+                limit
             }
         }
         const response = await axios.get(url, config)

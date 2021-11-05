@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const SpotifyService = require('./src/spotify-service')
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === 'dev';
 
 const app = express()
 
@@ -18,6 +18,7 @@ const COOKIE_OPTIONS = {
 }
 
 app.get('/', async (req, res) => {
+    console.log(req.query)
     res.json({
         api: 'cafecomdungeon',
         version: '1.0.0',
@@ -26,6 +27,8 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/episodes', async (req, res) => {
+    const { limit, offset } = req.query;
+
     try {
         let accessToken = req.signedCookies['token'];
         
@@ -39,12 +42,13 @@ app.get('/episodes', async (req, res) => {
             })
         } 
         
-        const episodes = await SpotifyService.getEpisodes(accessToken);
+        const params = { token: accessToken, limit, offset };
+        const episodes = await SpotifyService.getEpisodes(params);
         
         res.json(episodes)
     } catch (error) {
         console.error(error)
-        res.error(500).json(error)
+        res.status(500).send()
     }
 })
 
