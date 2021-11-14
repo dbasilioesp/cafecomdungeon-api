@@ -1,10 +1,10 @@
 require('dotenv').config()
-const axios = require('axios')
+import axios from 'axios';
 
 const clientId = process.env.SPOTIFY_CLIENTID; // Your client id
 const secret = process.env.SPOTIFY_SECRET; // Your secret
 
-const SpotifyService = {
+export default {
     async auth() {
         const url = 'https://accounts.spotify.com/api/token';
         const data = 'grant_type=client_credentials';
@@ -36,5 +36,3 @@ const SpotifyService = {
         return response.data;
     }
 }
-
-module.exports = SpotifyService;
