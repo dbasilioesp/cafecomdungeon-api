@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Episode {
+  id Int @id @default(autoincrement())
+  spotifyId  String  @db.VarChar(50)
+  name String
+  description String
+  htmlDescription String
+  durationMS Int
+  releaseDate DateTime
+  image Json?
+  network EpisodeNetwork[]
+}
+
+model EpisodeNetwork {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(50)
+  uri String?
+  url String?
+  episode Episode @relation(fields: [episodeId], references: [id])
+  episodeId Int @unique
+}
