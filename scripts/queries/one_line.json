@@ -1,0 +1,31 @@
+[
+  {
+    "internal_id": 1,
+    "id": "27dvmhGrGBdQ0DxWjwUKJs",
+    "name": "Café com Dungeon #01",
+    "description": "Nosso episódio piloto! Neste podcast Rafael Balbi fala um pouco sobre RPG sem edição e sem firula!  O post Café com Dungeon #01 apareceu primeiro em Regra da Casa.",
+    "html_description": "<p>Nosso episódio piloto! Neste podcast Rafael Balbi fala um pouco sobre RPG sem edição e sem firula!</p>\n\n<p>O post <a href='http://regradacasa.com.br/cafe-com-dungeon-01/'>Café com Dungeon #01</a> apareceu primeiro em <a href='http://regradacasa.com.br/'>Regra da Casa</a>.</p>",
+    "audio_preview_url": "https://p.scdn.co/mp3-preview/7fd9a453822c832f1e73f7f6d51c1ec8f8f9e976",
+    "duration_ms": 752379,
+    "href": "https://api.spotify.com/v1/episodes/27dvmhGrGBdQ0DxWjwUKJs",
+    "release_date": "2018-03-16",
+    "uri": "spotify:episode:27dvmhGrGBdQ0DxWjwUKJs",
+    "images": {
+      "0": {
+        "height": 640,
+        "url": "https://i.scdn.co/image/47af9ee2ae14fbfa73ec3e7b3ee7c2471fd92719",
+        "width": 640
+      },
+      "1": {
+        "height": 300,
+        "url": "https://i.scdn.co/image/d249d1170ffd8fad102da7a767ed2354d19df1eb",
+        "width": 300
+      },
+      "2": {
+        "height": 64,
+        "url": "https://i.scdn.co/image/f8fa3ddeed247d98826fbf6c32aa1b9bb61d0cba",
+        "width": 64
+      }
+    }
+  }
+]

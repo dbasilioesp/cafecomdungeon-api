@@ -12,21 +12,22 @@ datasource db {
 
 model Episode {
   id Int @id @default(autoincrement())
-  spotifyId  String  @db.VarChar(50)
   name String
   description String
   htmlDescription String
-  durationMS Int
   releaseDate DateTime
-  image Json?
-  network EpisodeNetwork[]
+  image String?
+  hosts Host[]
 }
 
-model EpisodeNetwork {
+model Host {
   id Int @id @default(autoincrement())
+  internalId String @db.VarChar(50)
   name String @db.VarChar(50)
   uri String?
-  url String?
+  href String?
+  durationMS Int
+  audioPreviewUrl String?
   episode Episode @relation(fields: [episodeId], references: [id])
   episodeId Int @unique
 }
