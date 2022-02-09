@@ -31,13 +31,14 @@ async function listEpisodes(req, res) {
 
   if (q) {
     options.where = {
+      name: {
+        contains: q,
+      },
       description: {
         contains: q,
       }
     }
   }
-
-
 
   const allEpisodes = await prisma.episode.findMany(options)
   const total = await prisma.episode.count()
