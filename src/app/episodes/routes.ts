@@ -31,12 +31,18 @@ async function listEpisodes(req, res) {
 
   if (q) {
     options.where = {
-      name: {
-        contains: q,
-      },
-      description: {
-        contains: q,
-      }
+      OR: [
+        {
+          name: {
+            contains: q,
+          },
+        },
+        {
+          description: {
+            contains: q,
+          }
+        },
+      ]
     }
   }
 
