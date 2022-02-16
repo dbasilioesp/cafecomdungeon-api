@@ -1,37 +1,32 @@
 // require('dotenv').config()
 import { Client } from "pg";
-import SpotifyService from '../src/spotify-service'
+import SpotifyService from '../src/app/spotify/services'
 
-const config = {
-    user: 'db',
-    host: 'localhost',
-    password: '',
-    database: 'CcD_Podcast',
-    port: '5432'
-}
-const client = new Client(config)
+// const config = {
+//     user: 'db',
+//     host: 'localhost',
+//     password: '',
+//     database: 'CcD_Podcast',
+//     port: '5432'
+// }
+// const client = new Client(config)
 
 async function main() {
-    await client.connect()
-    
-    const limit = 50;
-    let offset = 0;
-    
-    while(true) {
-        const auth = await SpotifyService.auth()
-        const params = { token: auth.access_token, limit, offset };
-        let  data = await SpotifyService.getEpisodes(params);
-        await saveEpisodes(data.items);
+    // await client.connect()
 
-        if(data.items.length === 0 || data.next === null) {
-            break;
-        }
+    const callback = async (data) => {
+        // await saveEpisodes(data.items);
+        console.log(Object.keys(data));
+        process.exit();
+    };
+    const props = {};
 
-        offset += 50;
-    }
-    
+    await SpotifyService.iterateEpisodes(callback, props);
+
     process.exit();
 }
+
+
 
 async function saveEpisodes(episodes) {
     const fields = '(id, name, description, html_description, audio_preview_url, duration_ms, href, release_date, uri)';
@@ -49,7 +44,7 @@ async function saveEpisodes(episodes) {
             ep.release_date,
             ep.uri
         ]
-        await client.query(sql, values)
+        // await client.query(sql, values)
     }
 }
 
