@@ -6,28 +6,29 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Episode {
   id Int @id @default(autoincrement())
+  episodeNumber Int @default(0)
   name String
-  description String
-  htmlDescription String
+  description String @db.Text
+  htmlDescription String @db.Text
   releaseDate DateTime
-  image String?
+  imageUrl String? @db.VarChar(255)
   hosts Host[]
 }
 
 model Host {
   id Int @id @default(autoincrement())
-  internalId String @db.VarChar(50)
-  name String @db.VarChar(50)
-  uri String?
-  href String?
+  externalId String?
+  origin String
+  uri String? @db.VarChar(255)
+  url String? @db.VarChar(255)
   durationMS Int
-  audioPreviewUrl String?
+  audioPreviewUrl String? @db.VarChar(255)
   episode Episode @relation(fields: [episodeId], references: [id])
   episodeId Int @unique
 }

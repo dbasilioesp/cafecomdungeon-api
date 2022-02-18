@@ -53,8 +53,32 @@ async function iterateEpisodes(callback, props) {
     }
 }
 
+async function loadEpisodes(offset = 0, limit = 50) {
+    const collection = [];
+    let inOffset = offset
+
+    while (true) {
+        console.log("Progress: ", inOffset)
+        const credentials = await auth()
+        const params = { token: credentials.access_token, limit, offset: inOffset };
+        let data = await getEpisodes(params);
+
+        console.log("Items size: ", data.items.length)
+        collection.push(data)
+
+        if (data.items.length === 0 || data.next === null) {
+            break;
+        }
+
+        inOffset += 50;
+    }
+
+    return collection;
+}
+
 export default {
     auth,
     getEpisodes,
     iterateEpisodes,
+    loadEpisodes,
 }
