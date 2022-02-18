@@ -5,14 +5,15 @@
       "module": "commonjs",
       "outDir": "dist/",
       "sourceMap": true,
-      "lib": ["esnext"],
+      "lib": ["esnext", "DOM"],
       "esModuleInterop": true,
       "resolveJsonModule": true
     },
     "files": [
       "./node_modules/@types/node/index.d.ts",
       "./node_modules/@types/express/index.d.ts",
-      "./node_modules/@types/cookie-parser/index.d.ts"
+      "./node_modules/@types/cookie-parser/index.d.ts",
+      "./node_modules/adminjs/types/src/index.d.ts"
     ],
     "include": [
       "server.ts",
