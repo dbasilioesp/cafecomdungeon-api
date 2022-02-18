@@ -23,6 +23,6 @@ app.use(adminJs.options.rootPath, adminJsRouter)
 app.use('/episodes', EpisodeRouter);
 app.use('/sporify', SpotifyRouter);
 
-app.listen('3000', () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Listening on 3000')
 })
