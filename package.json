@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node dist/server.js",
+    "start": "node dist/server.js",
+    "build": "tsc",
     "dev": "ts-node-dev server.ts",
     "tsc": "tsc",
     "postinstall": "npm run tsc",
