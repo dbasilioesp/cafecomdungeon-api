@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Episode" ALTER COLUMN "image" SET DATA TYPE TEXT;
