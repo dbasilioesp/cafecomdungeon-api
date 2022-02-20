@@ -14,6 +14,7 @@ model Episode {
   id Int @id @default(autoincrement())
   episodeNumber Int @default(0)
   name String
+  preview String? @db.Text
   description String @db.Text
   htmlDescription String @db.Text
   releaseDate DateTime

@@ -15,8 +15,14 @@ export const adminJs = new AdminJS({
     {
       resource: { model: dmmf.modelMap.Episode, client: prisma },
       options: {
+        listProperties: ['name', 'episodeNumber', 'releaseDate'],
+        sort: {
+          sortBy: 'episodeNumber',
+          direction: 'desc'
+        },
         properties: {
           description: { type: 'textarea' },
+          preview: { type: 'richtext' },
           htmlDescription: { type: 'richtext' }
         }
       },
