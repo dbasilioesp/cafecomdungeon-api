@@ -1,2 +1,2 @@
 -- AlterTable
-ALTER TABLE `episode` ADD COLUMN `preview` TEXT NULL;
+ALTER TABLE `Episode` ADD COLUMN `preview` TEXT NULL;
