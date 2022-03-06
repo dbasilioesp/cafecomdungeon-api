@@ -26,3 +26,11 @@ npm run dev
 ## Dump
 
 Link para os dumps do banco de dados: https://drive.google.com/drive/folders/1EGDU8SXInXxBfr-IWUzSQLvHZSHdulB3?usp=sharing
+
+## Regenerate Prisma CLI
+
+Link https://www.prisma.io/docs/concepts/components/prisma-cli/installation .
+
+```
+npx prisma generate
+```

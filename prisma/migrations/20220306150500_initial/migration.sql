@@ -1,8 +1,9 @@
 -- CreateTable
-CREATE TABLE `Episode` (
+CREATE TABLE `episodes` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `episodeNumber` INTEGER NOT NULL DEFAULT 0,
     `name` VARCHAR(191) NOT NULL,
+    `preview` TEXT NULL,
     `description` TEXT NOT NULL,
     `htmlDescription` TEXT NOT NULL,
     `releaseDate` DATETIME(3) NOT NULL,
@@ -12,7 +13,7 @@ CREATE TABLE `Episode` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Host` (
+CREATE TABLE `hosts` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `externalId` VARCHAR(191) NULL,
     `origin` VARCHAR(191) NOT NULL,
@@ -22,9 +23,9 @@ CREATE TABLE `Host` (
     `audioPreviewUrl` VARCHAR(255) NULL,
     `episodeId` INTEGER NOT NULL,
 
-    UNIQUE INDEX `Host_episodeId_key`(`episodeId`),
+    UNIQUE INDEX `hosts_episodeId_key`(`episodeId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Host` ADD CONSTRAINT `Host_episodeId_fkey` FOREIGN KEY (`episodeId`) REFERENCES `Episode`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `hosts` ADD CONSTRAINT `hosts_episodeId_fkey` FOREIGN KEY (`episodeId`) REFERENCES `episodes`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

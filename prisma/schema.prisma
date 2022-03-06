@@ -11,6 +11,8 @@ datasource db {
 }
 
 model Episode {
+  @@map("episodes")
+
   id Int @id @default(autoincrement())
   episodeNumber Int @default(0)
   name String
@@ -23,6 +25,8 @@ model Episode {
 }
 
 model Host {
+  @@map("hosts")
+
   id Int @id @default(autoincrement())
   externalId String?
   origin String
@@ -33,3 +37,4 @@ model Host {
   episode Episode @relation(fields: [episodeId], references: [id])
   episodeId Int @unique
 }
+
